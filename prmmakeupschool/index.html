@@ -20,6 +20,7 @@
 <!--[if lte IE 8]>
 		<script type="text/javascript" src="http://explorercanvas.googlecode.com/svn/trunk/excanvas.js"></script>
 	<![endif]-->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" />
 <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
@@ -784,68 +785,85 @@
     </div>
 </div>
 
-<div class="registration-section" style="
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background: linear-gradient(135deg, #f9d5e5 0%, #e3e3f9 100%);
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    text-align: center;
-">
-    
-    <div class="registration-section" style="/* your existing styles */">
-    <h2 style="/* your existing styles */">
-        Register Now – Limited Seats Only!
-    </h2>
-    
-    <!-- Google Form Embed Code -->
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScnkAfRyIZCB1qbO8_dSCGjgO2kx6wOLsmiWEFkZVrjz3P6Fw/viewform?usp=header" 
-            style="
-                width: 100%;
-                height: 800px; /* adjust as needed */
-                border: none;
-                margin: 20px 0;
-                border-radius: 10px;
-            ">
-        Loading...
-    </iframe>
-    
-     <div style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255,255,255,0.7);
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 20px;
-    ">
-        <span style="
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background-color: #d23c77;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            margin-right: 10px;
-            font-weight: bold;
-            font-size: 1rem;
-        ">⚠</span>
-        <span><strong>Bonus:</strong> First 100 signups get a personal career consultation with PRM Makeup School!</span>
-    </div>
+
+    <!-- ⬇︎ BEGIN: Registration Section -->
+<div class="registration-section" >
+  <h2 style="color: red;">🎓 Register Now – Limited Seats!</h2>
+
+  <form action="https://sheetdb.io/api/v1/b9wi6if254zy5" method="POST" id="registrationForm" style="text-align: left; max-width: 500px; margin: 0 auto;">
+
+  <label for="name" style="color: purple;">Full Name</label><br />
+  <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-bottom: 15px;" />
+
+  <label for="email" style="color: purple;">Email Address</label><br />
+  <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 15px;" />
+
+  <label for="phone" style="color: purple;">Phone Number</label><br />
+  <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 8px; margin-bottom: 15px;" />
+
+  <label for="experience" style="color: purple;">Years of Experience</label><br />
+  <select id="experience" name="experience" required style="width: 100%; padding: 8px; margin-bottom: 20px;">
+    <option value="">--Please choose an option--</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="more_than_3">More than 3</option>
+  </select>
+
+  <div style="text-align: center;">
+    <button type="submit" style="background-color: red; color: white; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer;">
+      Submit Registration
+    </button>
+  </div>
+
+</form>
+
+
+  <div class="bonus-banner">
+    <strong>💡 Bonus:</strong> First 10 sign-ups receive a free career consultation with PRM Makeup School!
+  </div>
+
+  <p class="privacy-note">
+    🔒 Your information is 100 % secure. We respect your privacy.
+  </p>
+  <script>
+  const form = document.getElementById('registrationForm');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();  // prevent default form submit
+
+    const formData = new FormData(form);
+    const data = {};
+
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data }),
+      });
+
+      if (response.ok) {
+        alert('Registration successful! Thank you.');
+        form.reset();
+      } else {
+        alert('Error submitting form. Please try again.');
+      }
+    } catch (error) {
+      alert('Network error. Please check your connection and try again.');
+    }
+  });
+</script>
+
 </div>
-    <div style="
-        margin-top: 25px;
-        font-size: 0.9rem;
-        color: #666;
-    ">
-        <p>🔒 Your information is 100% secure. We respect your privacy.</p>
-    </div>
-</div>
+
+
+<!-- ⬆︎ END: Registration Section -->
+
 
 
 
